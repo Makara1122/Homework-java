@@ -114,7 +114,7 @@ public class Main {
             boolean result = matcher.find();
 
             if (result) {
-                System.out.println("Successfully validation: ");
+
                 int value = Integer.parseInt(number);
                 return value;
             } else {
@@ -133,7 +133,7 @@ public class Main {
             boolean result = matcher.find();
 
             if (result) {
-                System.out.println("Successfully validation: ");
+
 
                 return number;
             } else {
@@ -178,7 +178,7 @@ public class Main {
                     int hallInsert = validation("Enter hall: ", scanner, "[0-9]+") - 1;
 
 
-                    morningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "[a-zA-Z]+");
+                    morningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
                     String result = morningHall[hallInsert][roomInsert];
@@ -204,9 +204,9 @@ public class Main {
 
                     option1 = validation("Enter option: [10. for exit ] ... for more operations :", scanner, "[0-9]+");
 
+                    count++;
                 }
 
-                count++;
             }
 
             case "B" -> {
@@ -242,7 +242,7 @@ public class Main {
                     int hallInsert = validation("Enter hall: ", scanner, "[0-9]+") - 1;
 
 
-                    eveningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "[a-zA-Z]+");
+                    eveningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
                     String result = eveningHall[hallInsert][roomInsert];
@@ -267,9 +267,9 @@ public class Main {
 
 
                     option1 = validation("Enter option: [10. for exit ] ... for more operations :", scanner, "[0-9]+");
-
+                    count++;
                 }
-                count++;
+
             }
             case "C" -> {
 
@@ -304,7 +304,7 @@ public class Main {
                     int hallInsert = validation("Enter hall: ", scanner, "[0-9]+") - 1;
 
 
-                    nigthHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "[a-zA-Z]+");
+                    nigthHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
                     String result = nigthHall[hallInsert][roomInsert];
@@ -329,10 +329,10 @@ public class Main {
 
 
                     option1 = validation("Enter option: [10. for exit ] ... for more operations :", scanner, "[0-9]+");
-
+                    count++;
                 }
 
-                count++;
+
             }
         }
     }
