@@ -12,6 +12,15 @@ public class Main {
     static int[] idMor = new int[100];
     static int count = 0;
 
+
+    static int roommorning = 0;
+    static int roomevening = 0;
+    static int roomnight = 0;
+
+    static int hallmorning = 0;
+    static int hallevening = 0;
+    static int hallnight = 0;
+
     static String[][] morningHall;
     static String[][] eveningHall;
     static String[][] nigthHall;
@@ -48,6 +57,10 @@ public class Main {
                 }
                 case 5 -> {
                     history();
+                }
+                case 6 -> {
+                    rebootHistory();
+
                 }
                 default -> System.out.println("Invalid option: !!");
             }
@@ -96,12 +109,23 @@ public class Main {
         System.out.println("[3]. showHall");
         System.out.println("[4]. showTime");
         System.out.println("[5]. history");
+        System.out.println("[6]. Reboot history");
     }
 
     public static void history() {
-        for (int i = 0; i < count; i++) {
-            System.out.println("Student booked time: \t\t"+dateTimeMor[i] + "\t" + "Student id: "+idMor[i]);
+
+        if (dateTimeMor[0] != null && idMor[0] !=0){
+            for (int i = 0; i < count; i++) {
+
+                System.out.println("Student booked time: \t\t"+dateTimeMor[i] + "\t" + "Student id: "+idMor[i]);
+            }
+        }else {
+            System.out.println("There is no student record::");
         }
+
+
+
+
     }
 
     public static int validation(String message, Scanner scanner, String regex) {
@@ -177,7 +201,8 @@ public class Main {
                     int roomInsert = validation("Enter room: ", scanner, "[0-9]+") - 1;
                     int hallInsert = validation("Enter hall: ", scanner, "[0-9]+") - 1;
 
-
+                    roommorning = roomInsert+1;
+                    hallmorning = hallInsert+1;
                     morningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
@@ -241,7 +266,8 @@ public class Main {
                     int roomInsert = validation("Enter room: ", scanner, "[0-9]+") - 1;
                     int hallInsert = validation("Enter hall: ", scanner, "[0-9]+") - 1;
 
-
+                    roomevening = roomInsert+1;
+                    hallevening = hallInsert+1;
                     eveningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
@@ -303,6 +329,8 @@ public class Main {
                     int roomInsert = validation("Enter room: ", scanner, "[0-9]+") - 1;
                     int hallInsert = validation("Enter hall: ", scanner, "[0-9]+") - 1;
 
+                    roomnight = roomInsert+1;
+                    hallnight = hallInsert+1;
 
                     nigthHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
@@ -342,6 +370,87 @@ public class Main {
         System.out.println("# A) Morning (10:00AM  -  12:30PM)");
         System.out.println("# B) Afternoon (03:00PM  -  05:30PM)");
         System.out.println("# C) Night (07:00PM  -  09:30PM)");
+    }
+
+    public static void rebootHistory(){
+
+        for (int i = 0; i < count; i++){
+            dateTimeMor[i] = null;
+            idMor[i] = 0;
+        }
+
+        for (int i = 0; i < hallmorning; i++){
+            for (int j = 0; j < roommorning; j++){
+                morningHall[i][j] = null;
+            }
+        }
+        char c = 'A';
+        for (int i = 0; i < hallmorning; i++) {
+
+
+            for (int j = 0; j < roommorning; j++) {
+                if (morningHall[i][j] == null) {
+
+                    morningHall[i][j] = "|" + c + "-" + (j + 1) + ":AV|";
+
+                }
+
+                System.out.print(morningHall[i][j] + " ");
+
+
+            }
+            System.out.println();
+        }
+
+        for (int i = 0; i < hallevening; i++){
+            for (int j = 0; j < roomevening; j++){
+                eveningHall[i][j] = null;
+            }
+        }
+
+        char b = 'A';
+        for (int i = 0; i < hallevening; i++) {
+
+
+            for (int j = 0; j < roomevening; j++) {
+                if (eveningHall[i][j] == null) {
+
+                    eveningHall[i][j] = "|" + b + "-" + (j + 1) + ":AV|";
+
+                }
+
+                System.out.print(eveningHall[i][j] + " ");
+
+
+            }
+            System.out.println();
+        }
+
+        for (int i = 0; i < hallnight; i++){
+            for (int j = 0 ; j < roomnight; j++){
+                nigthHall[i][j] = null;
+
+            }
+        }
+
+        char a = 'A';
+        for (int i = 0; i < hallnight; i++) {
+
+
+            for (int j = 0; j < roomnight; j++) {
+                if (nigthHall[i][j] == null) {
+
+                    nigthHall[i][j] = "|" + a + "-" + (j + 1) + ":AV|";
+
+                }
+
+                System.out.print(nigthHall[i][j] + " ");
+
+
+            }
+            System.out.println();
+        }
+
     }
 }
 
