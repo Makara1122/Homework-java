@@ -11,7 +11,11 @@ public class Main {
     static Date[] dateTimeMor = new Date[100];
     static int[] idMor = new int[100];
     static int count = 0;
+    static final int idForMorning = 1;
+    static final int idForEvening = 2;
+    static final int idForNight = 3;
 
+    static int[] idHolder = new int[50];
 
     static int roommorning = 0;
     static int roomevening = 0;
@@ -117,6 +121,14 @@ public class Main {
         if (dateTimeMor[0] != null && idMor[0] !=0){
             for (int i = 0; i < count; i++) {
 
+            if(idHolder[i] == 1){
+                System.out.println("Student from morning Hall: ");
+            }else if (idHolder[i] == 2){
+                System.out.println("Student from evening Hall: ");
+            }else if (idHolder[i] == 3){
+                System.out.println("Student from night Hall: ");
+            }
+
                 System.out.println("Student booked time: \t\t"+dateTimeMor[i] + "\t" + "Student id: "+idMor[i]);
             }
         }else {
@@ -203,6 +215,7 @@ public class Main {
 
                     roommorning = roomInsert+1;
                     hallmorning = hallInsert+1;
+                    idHolder[count] = idForMorning;
                     morningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
@@ -268,6 +281,7 @@ public class Main {
 
                     roomevening = roomInsert+1;
                     hallevening = hallInsert+1;
+                    idHolder[count] = idForEvening;
                     eveningHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
                     idMor[count] = validation("Enter id: ", scanner, "[0-9]+");
@@ -331,6 +345,7 @@ public class Main {
 
                     roomnight = roomInsert+1;
                     hallnight = hallInsert+1;
+                    idHolder[count] = idForNight;
 
                     nigthHall[hallInsert][roomInsert] = validation2("Enter string: ", scanner, "^[A-Z]-\\d+$");
                     dateTimeMor[count] = new Date();
